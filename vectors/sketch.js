@@ -17,6 +17,8 @@ let videoOn = false
 let modeButton
 let magSlider
 let magP
+let speedSlider
+let speedP
 
 function setup() {
 	canvas = createCanvas(600, 400);
@@ -28,13 +30,13 @@ function setup() {
 	cols = floor(width/scl)
 	rows = floor(height/scl)
 	flowfield = new Array(cols * rows)
-	angleSlider = createSlider(0,6,3)
+	angleSlider = createSlider(0,4,2,0.1)
 	angleSlider.position(700, 300)
 	angleP = createP("Craziness:")
 	angleP.style("font-family", "Helvetica")
 	angleP.position(700, 250)
-	for (let i = 0; i < 200; i++) {
-		particles.push(new Particle(random(width), random(height)))
+	for (let i = 0; i < 100; i++) {
+		particles.push(new Particle(random(width), random(height), floor(random(1,40))))
 	}
 	center = createVector(width/2,height/2)	
 	modeButton = createButton("Switch Mode")
@@ -46,12 +48,12 @@ function setup() {
 	mapP = createP("Force Strength:")
 	mapP.style("font-family", "Helvetica")
 	mapP.position(700, 150)
+	speedP = createP("Speed:")
+	speedP.style("font-family", "Helvetica")
+	speedP.position(700,60)
+	speedSlider = createSlider(0.1,20,5,0.1)
+	speedSlider.position(700, 100)
 	background(255)
-	// if (videoOn) {
-	// 	colorMode(RGB)
-	// } else if (!videoOn) {
-	// 	colorMode(HSB,255)
-	// }
 }
 
 function switchMode() {
@@ -93,12 +95,12 @@ function draw() {
 		// particles[i].attracted(mouseVector)
 		// particles[i].vel.limit(10)
 		particles[i].follow(flowfield)
+		particles[i].vel.limit(speedSlider.value())
 		particles[i].update()	
 	 	particles[i].edges()
-		particles[i].show(videoOn)
-		
+		particles[i].show(videoOn)		
 	}
 
-	
+	console.log(speedSlider.value())
 
 }
