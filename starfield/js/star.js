@@ -25,6 +25,9 @@ class Star {
         this.pz = this.z
         stroke(this.h, 255, 255, 25)
         this.h+=0.1
+        if (this.h > 255) {
+            this.h = 0;
+        }
         line(px, py, sx, sy)
     }
 }
