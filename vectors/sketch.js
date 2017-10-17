@@ -53,7 +53,7 @@ function setup() {
 	speedP.position(700,60)
 	speedSlider = createSlider(0.1,20,5,0.1)
 	speedSlider.position(700, 100)
-	background(255)
+	// background(255)
 }
 
 function switchMode() {
@@ -62,7 +62,7 @@ function switchMode() {
 
 function draw() {
 	// console.log(videoOn)
-	// background(255)
+	background(255)
 	video.loadPixels()
 	// mouseVector = createVector(mouseX, mouseY)
 	// strokeWeight(2)
@@ -79,27 +79,27 @@ function draw() {
 			v.setMag(magSlider.value())
 			flowfield[index] = v
 			xoff += inc
-			// stroke(0)
-			// push()
-			// translate(x*scl, y*scl)
-			// rotate(v.heading())
-			// line(0, 0, scl, 0)
-			// pop()
+			stroke(0)
+			push()
+			translate(x*scl, y*scl)
+			rotate(v.heading())
+			line(0, 0, scl, 0)
+			pop()
 		}
 		yoff += inc
 		zoff += 0.001
 	}
 
 
-	for (let i = 0; i < particles.length; i++) {
-		// particles[i].attracted(mouseVector)
-		// particles[i].vel.limit(10)
-		particles[i].follow(flowfield)
-		particles[i].vel.limit(speedSlider.value())
-		particles[i].update()	
-	 	particles[i].edges()
-		particles[i].show(videoOn)		
-	}
+	// for (let i = 0; i < particles.length; i++) {
+	// 	// particles[i].attracted(mouseVector)
+	// 	// particles[i].vel.limit(10)
+	// 	particles[i].follow(flowfield)
+	// 	particles[i].vel.limit(speedSlider.value())
+	// 	particles[i].update()	
+	//  	particles[i].edges()
+	// 	particles[i].show(videoOn)		
+	// }
 
 	console.log(speedSlider.value())
 

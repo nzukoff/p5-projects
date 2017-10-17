@@ -2,6 +2,7 @@
   "name": "projects",
   "projects": [
     "micFFT",
-    "vectors"
+    "vectors",
+    "starfield"
   ]
 }
