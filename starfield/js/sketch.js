@@ -3,10 +3,11 @@ let x = 0, y = 0, scaleAmount = 1
 
 function setup() {
 	canvas = createCanvas(windowWidth,windowHeight);
+	colorMode(HSB)
 	// let x = (windowWidth - width) / 2;
 	// let y = (windowHeight - height) / 2
 	// canvas.position(x, y);
-	for (i = 0; i < 200; i++) {
+	for (i = 0; i < 1000; i++) {
 		stars.push(new Star())
 	}
 }
@@ -38,10 +39,7 @@ function draw() {
 	background(0)
 	let moveX = map(mouseX, 0, width, -width/2, width/2)
 	let moveY = map(mouseY, 0, height, -height/2, height/2)
-	// translate(width/2+x, height/2+y)
 	translate(width/2+moveX, height/2+moveY)
-	
-	// var scaleAmount = mouseX / 200;
 	scale(scaleAmount);
 	for (i = 0; i < stars.length; i++) {
 		stars[i].update()
