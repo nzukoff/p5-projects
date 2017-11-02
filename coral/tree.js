@@ -5,7 +5,7 @@ function Tree(startX, bandWidth) {
   this.shapes = []
   this.leavesX = []
   
-  for (var i =0; i < 3; i++ ) {
+  for (var i =0; i < 2; i++ ) {
     let shape = new Shape(startX, bandWidth)
     this.shapes.push(shape)
   }
@@ -91,14 +91,26 @@ function Tree(startX, bandWidth) {
 
 
 
-  this.show = function() {
+  this.show = function(flowfield) {
     // for (var i = 0; i < this.leaves.length; i++) {
     //   this.leaves[i].show();
     // }
 
     for (var i = 0; i < this.branches.length; i++) {
-      this.branches[i].show();
+      this.branches[i].show();    
     }
+
+
+    for (var i = 10; i < this.branches.length; i++) {
+      if (this.leaves.length == 0) {
+        	this.branches[i].follow(flowfield)
+          this.branches[i].update()	          
+          this.branches[i].show();  
+          this.branches[i].edges()        
+      }
+  }
+
+
 
     // for (var i = 0; i < this.shapes.length; i++) {
     //   this.shapes[i].show();
