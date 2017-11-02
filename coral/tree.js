@@ -1,22 +1,15 @@
-// Coding Rainbow
-// Daniel Shiffman
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/kKT0v3qhIQY
-// let randomX = random(0, width/4)
-// let randomX = 0
-function Tree() {
+
+function Tree(startX, bandWidth) {
   this.leaves = [];
   this.branches = [];
   this.shapes = []
   this.leavesX = []
   
-  // this.randomX = random(0, width/4)
   for (var i =0; i < 3; i++ ) {
-    let shape = new Shape()
+    let shape = new Shape(startX, bandWidth)
     this.shapes.push(shape)
-    
   }
-  // console.log("RANDX BEEFORE ", randomX)
+
   for (var i = 0; i < 200; i++) {
     for (var j = 0; j<this.shapes.length; j++) {
       let leaf = new Leaf(this.shapes[j])
@@ -24,14 +17,9 @@ function Tree() {
       this.leavesX.push(leaf.pos.x)
     }
     
-    
-    
-    
   }
   let xMax = max(this.leavesX)
   let xMin = min(this.leavesX)
-  // randomX = floor(random(xMax-10, xMax+10))
-  // console.log("RANDX AFTER ", randomX)
   let randomStart = floor(random(xMin, xMax))
   var pos = createVector(randomStart, height);
   var dir = createVector(0, -1);
@@ -39,9 +27,6 @@ function Tree() {
   this.branches.push(root);
   var current = root;
   var found = false;
-  
-  console.log("X MIN IS ", min(this.leavesX))
-  console.log("X MAX IS ", max(this.leavesX))
   while (!found) {
     for (var i = 0; i < this.leaves.length; i++) {
       var d = p5.Vector.dist(current.pos, this.leaves[i].pos);
@@ -107,20 +92,17 @@ function Tree() {
 
 
   this.show = function() {
-    console.log("TREE")
     // for (var i = 0; i < this.leaves.length; i++) {
     //   this.leaves[i].show();
     // }
 
-    // for (var i = 0; i < this.branches.length; i++) {
-    //   this.branches[i].show();
-    // }
-
-    for (var i = 0; i < this.shapes.length; i++) {
-      console.log(this.shapes[i].x)
-      console.log(this.shapes[i].y)
-      this.shapes[i].show();
+    for (var i = 0; i < this.branches.length; i++) {
+      this.branches[i].show();
     }
+
+    // for (var i = 0; i < this.shapes.length; i++) {
+    //   this.shapes[i].show();
+    // }
 
   }
 

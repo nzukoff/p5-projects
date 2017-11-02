@@ -1,8 +1,3 @@
-// Coding Rainbow
-// Daniel Shiffman
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/kKT0v3qhIQY
-
 function Branch(parent, pos, dir) {
   this.pos = pos;
   this.parent = parent;
@@ -25,7 +20,6 @@ function Branch(parent, pos, dir) {
   }
 
   this.show = function() {
-    console.log("BRANCH")
     if (parent != null) {
       stroke(255);
       line(this.pos.x, this.pos.y, this.parent.pos.x, this.parent.pos.y);
