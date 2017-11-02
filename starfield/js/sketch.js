@@ -11,7 +11,7 @@ function setup() {
 	// let x = (windowWidth - width) / 2;
 	// let y = (windowHeight - height) / 2
 	// canvas.position(x, y);
-	for (i = 0; i < 200; i++) {
+	for (i = 0; i < 1000; i++) {
 		stars.push(new Star())
 	}
 }

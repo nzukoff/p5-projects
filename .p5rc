@@ -3,6 +3,9 @@
   "projects": [
     "micFFT",
     "vectors",
-    "starfield"
+    "starfield",
+    "photo-scatter",
+    "coral",
+    "playground"
   ]
 }
